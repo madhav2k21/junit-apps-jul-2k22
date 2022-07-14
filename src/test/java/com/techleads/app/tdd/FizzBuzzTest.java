@@ -4,6 +4,8 @@ package com.techleads.app.tdd;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -48,6 +50,56 @@ public class FizzBuzzTest {
     void testForNotDivisibleBy3AndDivisibleBy5(int num) {
 
         assertEquals(String.valueOf(num),FizzBuzz.compute(num));
+    }
+
+
+    @ParameterizedTest(name = "value={0}, expected={1}")
+    @CsvFileSource(resources = "/small-test-data.csv")
+    @DisplayName("{5} testDivisibleBy3Or5WithCSVSourceFile()")
+    void testDivisibleBy3Or5WithCSVSourceFile(int value, String expected) {
+
+        assertEquals(expected,FizzBuzz.compute(value));
+    }
+
+    @ParameterizedTest(name = "value={0}, expected={1}")
+    @CsvSource({
+            "1, 1",
+            "2, 2",
+            "3, Fizz",
+            "4, 4",
+            "5, Buzz",
+            "6, Fizz",
+            "7, 7",
+            "8, 8",
+            "9, Fizz",
+            "10, Buzz",
+            "11, 11",
+            "12, Fizz",
+            "13, 13",
+            "14, 14",
+            "15, FizzBuzz"
+    })
+    @DisplayName("{6} testDivisibleBy3Or5WithCSVSource()")
+    void testDivisibleBy3Or5WithCSVSource(int value, String expected) {
+
+        assertEquals(expected, FizzBuzz.compute(value));
+    }
+
+
+    @ParameterizedTest(name = "value={0}, expected={1}")
+    @CsvFileSource(resources = "/medium-test-data.csv")
+    @DisplayName("{7} testDivisibleBy3Or5WithCSVSourceFileMedium()")
+    void testDivisibleBy3Or5WithCSVSourceFileMedium(int value, String expected) {
+
+        assertEquals(expected,FizzBuzz.compute(value));
+    }
+
+    @ParameterizedTest(name = "value={0}, expected={1}")
+    @CsvFileSource(resources = "/large-test-data.csv")
+    @DisplayName("{8} testDivisibleBy3Or5WithCSVSourceFileLarge()")
+    void testDivisibleBy3Or5WithCSVSourceFileLarge(int value, String expected) {
+
+        assertEquals(expected,FizzBuzz.compute(value));
     }
 }
 
