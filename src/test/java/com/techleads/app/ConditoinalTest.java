@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.*;
 
+
+
 public class ConditoinalTest {
 
     @Test
@@ -15,7 +17,6 @@ public class ConditoinalTest {
     @Test
     @EnabledOnOs(OS.WINDOWS)
     void testForWindows() {
-
     }
 
     @Test
